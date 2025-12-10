@@ -562,11 +562,29 @@ function BookingPage({ onBack }: { onBack: () => void }) {
         <p className="text-xl md:text-2xl text-[#F2C94C] font-semibold mb-12 italic">but full transparency first</p>
 
         <div className="space-y-6 text-lg md:text-xl text-[#D2D2D2] leading-relaxed text-left max-w-2xl mx-auto">
-            <p>We're still building the product. Which means this call is different.</p>
-            <p>I'll share the <strong className="text-white">complete revenue system framework</strong> we're building: the exact structure for predictable SaaS growth. You can take it and run with it yourself. <span className="text-white font-bold underline decoration-[#F2C94C]">For free</span>.</p>
-            <p>And I'll help you figure out what's actually broken in your setup right now. Your positioning, your outbound, your conversion, whatever the real bottleneck is.</p>
-            <p>You get a clear strategy session + the framework. I get to understand what founders actually need.</p>
-            <p className="font-bold text-white">Fair trade?</p>
+            <p>
+                We're <span className="underline decoration-[#F2C94C]/60 underline-offset-4">still building the product</span>. Which means this call is different.
+            </p>
+            
+            <p>
+                <span className="underline decoration-[#F2C94C]/60 underline-offset-4 text-white">I'll share the complete revenue system framework we're building: the exact structure for predictable SaaS growth.</span>
+            </p>
+
+            <p className="text-[#F2C94C] italic">
+                You can take it and run with it yourself. For free.
+            </p>
+            
+            <p className="italic">
+                I'll help you figure out what's actually broken in your setup right now — your positioning, your outbound, your conversion, whatever the real bottleneck is.
+            </p>
+            
+            <p className="font-bold text-white text-2xl">
+                You get a clear strategy session + the framework.
+            </p>
+
+            <p className="underline decoration-[#F2C94C]/60 underline-offset-4 text-white font-semibold">
+                Fair trade?
+            </p>
         </div>
 
         <div className="mt-12">
