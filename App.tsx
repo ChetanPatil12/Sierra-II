@@ -41,7 +41,7 @@ function App() {
 
         <div className="z-10 fade-in-up">
           <h1 className="text-4xl md:text-[64px] font-bold leading-tight mb-8">
-            We Build the <span className="text-[#F2C94C]">Complete Revenue System</span> Your B2B SaaS Needs to Grow <span className="text-[#F2C94C]">Predictably</span>
+            We build a complete revenue system for <span className="text-[#F2C94C]">B2B SaaS under $50k</span> that generates <span className="text-[#F2C94C]">consistent qualified demos</span>, without becoming a full-time marketer within 75 days.
           </h1>
           
           <p className="text-[#D2D2D2] text-lg md:text-[21px] max-w-3xl mx-auto leading-relaxed mb-10">
@@ -118,10 +118,10 @@ function App() {
       {/* SECTION 4: LEAD QUALITY (NEW) */}
       <section className="py-24 px-6 max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            The problem isn’t that you’re not getting leads.
+            You don’t have a lead problem, <span className="text-[#F2C94C]">you have a system problem.</span>
         </h2>
         <p className="text-xl md:text-2xl text-[#D2D2D2] mb-12">
-            The problem is the <span className="text-white font-bold">kind of leads you’re getting.</span>
+            Leads show up, but there's <span className="text-[#F2C94C] font-bold">nothing consistent nudging them toward a demo.</span>
         </p>
         
         <ul className="space-y-6 text-lg md:text-xl text-[#D2D2D2] mb-12 inline-block text-left">
