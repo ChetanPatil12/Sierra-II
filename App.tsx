@@ -566,7 +566,7 @@ function Navbar({ onNavigate, onBookCall }: { onNavigate: (id: string) => void, 
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <div onClick={() => onNavigate('hero')} className="cursor-pointer">
                     <span className="text-2xl font-bold text-white tracking-wider hover:opacity-80 transition-opacity" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        SIERRA<span className="text-[#F2C94C]">-II</span>
+                        SIERRA-<span className="text-[#F2C94C]">II</span>
                     </span>
                 </div>
                 
