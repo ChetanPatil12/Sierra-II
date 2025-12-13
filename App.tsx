@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { QuizModal } from './components/QuizModal';
+import { CustomCursor } from './components/CustomCursor';
 import { CheckIcon, XIcon, BarChart } from './components/Icons';
 
 type ViewState = 'landing' | 'booking';
@@ -35,11 +36,17 @@ function App() {
   };
 
   if (view === 'booking') {
-    return <BookingPage onBack={navigateToHome} />;
+    return (
+      <>
+        <CustomCursor />
+        <BookingPage onBack={navigateToHome} />
+      </>
+    );
   }
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
+      <CustomCursor />
       <Navbar onNavigate={handleNavClick} onBookCall={navigateToBooking} />
       
       {/* Quiz Modal */}

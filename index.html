@@ -18,6 +18,13 @@
         color: #FFFFFF;
       }
       
+      /* Hide default cursor on desktop */
+      @media (pointer: fine) {
+        body, a, button, input, textarea, select, [role="button"] {
+          cursor: none !important;
+        }
+      }
+
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
