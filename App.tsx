@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { QuizModal } from './components/QuizModal';
 import { CheckIcon, XIcon, BarChart } from './components/Icons';
 
@@ -21,12 +21,27 @@ function App() {
     setView('landing');
   };
 
+  const handleNavClick = (id: string) => {
+    if (view !== 'landing') {
+      setView('landing');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   if (view === 'booking') {
     return <BookingPage onBack={navigateToHome} />;
   }
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
+      <Navbar onNavigate={handleNavClick} onBookCall={navigateToBooking} />
+      
       {/* Quiz Modal */}
       <QuizModal isOpen={isQuizOpen} onClose={closeQuiz} />
 
@@ -34,7 +49,7 @@ function App() {
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
       
       {/* SECTION 1: HERO */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center px-6 py-20 text-center max-w-6xl mx-auto">
+      <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center px-6 py-20 text-center max-w-6xl mx-auto pt-32">
         {/* Geometric Accents */}
         <div className="absolute top-20 right-[10%] w-24 h-24 border border-[#F2C94C] rounded-full opacity-20 hidden md:block" />
         <div className="absolute bottom-20 left-[5%] w-16 h-16 border border-[#EB5757] rotate-45 opacity-20 hidden md:block" />
@@ -57,7 +72,7 @@ function App() {
       </section>
 
       {/* SECTION 2: PAIN */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
+      <section id="pain" className="py-24 px-6 max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">Does this sound familiar?</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -150,7 +165,7 @@ function App() {
       </section>
 
       {/* SECTION 6: THE SOLUTION */}
-      <section className="py-24 px-6 max-w-5xl mx-auto">
+      <section id="solution" className="py-24 px-6 max-w-5xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-20">
           Revenue Machine Builder: The Complete System for $5K–$50K MRR SaaS Teams
         </h2>
@@ -195,7 +210,7 @@ function App() {
       </section>
 
       {/* SECTION 7: COMPARISON */}
-      <section className="py-24 px-6 max-w-4xl mx-auto">
+      <section id="comparison" className="py-24 px-6 max-w-4xl mx-auto">
         <div className="overflow-x-auto">
           <table className="w-full border border-[#E5E5E5]/15 text-left collapse">
             <thead>
@@ -242,7 +257,7 @@ function App() {
       </section>
 
       {/* SECTION 9: FAQ */}
-      <section className="py-24 px-6 max-w-4xl mx-auto">
+      <section id="faq" className="py-24 px-6 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-12">FAQ</h2>
         <div className="space-y-4">
           <FAQItem 
@@ -535,6 +550,43 @@ The tactics change for longer cycles, but the core system (research → outreach
       </footer>
     </div>
   );
+}
+
+function Navbar({ onNavigate, onBookCall }: { onNavigate: (id: string) => void, onBookCall: () => void }) {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    return (
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0E0E0E]/90 backdrop-blur-md py-4 border-b border-[#333]' : 'bg-transparent py-6'}`}>
+            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+                <div onClick={() => onNavigate('hero')} className="cursor-pointer">
+                    <span className="text-2xl font-bold text-white tracking-wider hover:opacity-80 transition-opacity" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        SIERRA<span className="text-[#F2C94C]">-II</span>
+                    </span>
+                </div>
+                
+                <div className="hidden md:flex items-center gap-8">
+                    <button onClick={() => onNavigate('pain')} className="text-[#D2D2D2] hover:text-white transition-colors text-sm font-medium">Problems</button>
+                    <button onClick={() => onNavigate('solution')} className="text-[#D2D2D2] hover:text-white transition-colors text-sm font-medium">Solution</button>
+                    <button onClick={() => onNavigate('comparison')} className="text-[#D2D2D2] hover:text-white transition-colors text-sm font-medium">Why Us</button>
+                    <button onClick={() => onNavigate('faq')} className="text-[#D2D2D2] hover:text-white transition-colors text-sm font-medium">FAQ</button>
+                    <button onClick={onBookCall} className="bg-[#F2C94C] text-[#0E0E0E] text-sm font-bold py-2 px-5 rounded hover:bg-[#ffe082] transition-colors">
+                        Book Strategy Call
+                    </button>
+                </div>
+
+                {/* Mobile Menu Icon (Simple version) */}
+                <div className="md:hidden">
+                    <button onClick={onBookCall} className="text-[#F2C94C] font-bold text-sm">Book Call</button>
+                </div>
+            </div>
+        </nav>
+    );
 }
 
 function BookingPage({ onBack }: { onBack: () => void }) {
